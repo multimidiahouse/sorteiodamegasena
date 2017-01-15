@@ -7,9 +7,20 @@ var index = {
 		document.addEventListener('deviceready', index.onDeviceReady, false);
 	},
 	onDeviceReady: function() {
-		index.initAd();
-		index.showBannerFunc();
-		index.showInterstitialFunc();
+		// Set AdMobAds options:
+		admob.setOptions({
+			publisherId:          "ca-app-pub-5075057333402288/2294971952",  // Required
+			interstitialAdId:     "ca-app-pub-5075057333402288/7922703150"  // Optional
+		});
+
+		// Start showing banners (atomatic when autoShowBanner is set to true)
+		admob.createBannerView();
+		// Request interstitial (will present automatically when autoShowInterstitial is set to true)
+		admob.requestInterstitialAd();
+		
+		//index.initAd();
+		//index.showBannerFunc();
+		//index.showInterstitialFunc();
 		var numeros = index.sorteio('megasena');
 		for(i=0;i<numeros.length;i++)
 			document.write('<div class="numerosdasorte">'+numeros[i]+'</div>');

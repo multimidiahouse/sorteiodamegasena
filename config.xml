@@ -46,7 +46,8 @@
 	<!-- <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0"/> -->
 	<!-- <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1"/> -->
 	<plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2"/>
-	<plugin name="cordova-plugin-admob-simple" source="npm"/>
+	<!--<plugin name="cordova-plugin-admob-simple" source="npm"/>-->
+	<gap:plugin name="phonegap-admob" source="npm"/>
 
 	<!-- <icon src="img/icon.png"/> -->
 	<platform name="android">
