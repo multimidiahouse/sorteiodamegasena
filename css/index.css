@@ -1,0 +1,23 @@
+/* CSS Document */
+html { height:100%; }
+body { 
+	height:100%; 
+	margin:0; 
+	padding:0; 
+	background-color:#CCC;
+}
+h3 { padding-left:0px; }
+form {
+	margin:15%;
+}
+.numerosdasorte {
+	border-radius:50%;
+	display:inline-block;
+	margin:5px;
+	padding-top:30px;
+	height:70px;
+	width:100px;
+	border:1px solid ##064424;
+	background-color:#0b8043;
+	font-size:30px;
+}
