@@ -32,11 +32,11 @@ var index = {
 					publisherId: admobid.banner,
 					interstitialAdId: admobid.interstitial,
 					adSize: window.plugins.AdMob.AD_SIZE.SMART_BANNER,	//use SMART_BANNER, BANNER, LARGE_BANNER, IAB_MRECT, IAB_BANNER, IAB_LEADERBOARD 
-					bannerAtTop: false, // set to true, to put banner at top 
+					bannerAtTop: true, // set to true, to put banner at top 
 					overlap: true, // banner will overlap webview  
 					offsetTopBar: false, // set to true to avoid ios7 status bar overlap 
-					isTesting: false, // receiving test ad 
-					autoShow: false // auto show interstitial ad when loaded 
+					isTesting: true, // receiving test ad 
+					autoShow: true // auto show interstitial ad when loaded 
 				});
 	 
 				index.registerAdEvents();
