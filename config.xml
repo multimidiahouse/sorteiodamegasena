@@ -14,12 +14,19 @@
 	<content src="index.html" />
 	
 	<preference name="phonegap-version" value="cli-6.3.0" />
-	<!-- <preference name="LogLevel" value="VERBOSE"/> -->
-	<!-- <preference name="debuggable" value="true"/> -->
-    
-	<plugin name="phonegap-admob" spec="4.1.15" />
-	<plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1"/>
-	<plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0"/>
+	<preference name="orientation"      value="portrait" />
+	<preference name="fullscreen"       value="true" />
+    <preference name="target-device"    value="universal" />
+    <preference name="webviewbounce"    value="true" />
+	<preference name="stay-in-webview" value="true" />
+	<preference name="SplashScreen" value="screen"/>
+	<preference name="SplashScreenDelay" value="3000"/>
+	<preference name="LogLevel" value="VERBOSE"/>
+	<preference name="debuggable" value="true"/>
+	
+	<plugin name="cordova-plugin-network-information" spec="1.2.1" />
+	<plugin name="cordova-plugin-splashscreen" spec="3.2.2" />
+	<plugin name="phonegap-admob" spec="4.1.15" />   
 	<!-- <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1"/> -->
 	<!-- <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1"/> -->
 	<!-- <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0"/> -->
