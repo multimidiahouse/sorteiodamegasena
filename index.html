@@ -2,19 +2,40 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no" />
 	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<meta name="msapplication-tap-highlight" content="no" />
 	<link rel="stylesheet" href="css/index.css" />
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
 	<link rel="stylesheet" href="css/themes/megasena.css" />
 	<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
-	<script src="cordova.js"></script>
 	<script src="js/jquery-2.1.4.min.js"></script> 
 	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
 	<script src="js/index.js"></script>
 	<title>Megasena</title>
 </head>
 <body>
 <div data-role="page" id="homepage" data-theme="a">
+	<div id="progressDialog" class="progressDialog hidden">
+		<div id="spinner"></div>
+		<span id="message">Loading ads...</span>
+	</div>
+    <p>
+      <a class="button" onclick="index.startBannerAds()">Start Banner Ads</a>
+      <a class="button" onclick="index.removeBannerAds()">Remove Banner Ads</a>
+    </p>
+    <p>
+      <a class="button" onclick="index.showBannerAds()">Show Banner Ads</a>
+      <a class="button" onclick="index.hideBannerAds()">Hide Banner Ads</a>
+    </p>
+    <p>
+      <a class="button" onclick="index.requestInterstitial(true)">Request and show Interstitial</a>
+    </p>
+    <p>
+      <a class="button" onclick="index.requestInterstitial(false)">Request Interstitial</a>
+      <a class="button" onclick="index.showInterstitial()">Show Interstitial</a>
+    </p>
 	<div style="text-align:center;">
 	<p>Seus números da sorte são:</p>
 	<script>
@@ -33,6 +54,7 @@
 		<input type="number" name="quantidade" id="quantidade" value="1" />
 		<a data-role="button" id="jogar" href="#cartelas" onclick="index.cartelas();">Jogar</a>
 	</form>
+	<div id="sizeinfo">width * height</div>
 </div>
 <div data-role="page" id="cartelas" data-theme="a">
 	<div><a data-role="button" href="#homepage">Jogar</a></div>

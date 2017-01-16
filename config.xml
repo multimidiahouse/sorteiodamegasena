@@ -14,19 +14,10 @@
 	<content src="index.html" />
 	
 	<preference name="phonegap-version" value="cli-6.3.0" />
-	<preference name="orientation"      value="portrait" />
-	<preference name="fullscreen"       value="true" />
-    <preference name="target-device"    value="universal" />
-    <preference name="webviewbounce"    value="true" />
-	<preference name="stay-in-webview" value="true" />
-	<preference name="SplashScreen" value="screen"/>
-	<preference name="SplashScreenDelay" value="3000"/>
 	<preference name="LogLevel" value="VERBOSE"/>
 	<preference name="debuggable" value="true"/>
-	
-	<plugin name="cordova-plugin-network-information" spec="1.2.1" />
-	<plugin name="cordova-plugin-splashscreen" spec="3.2.2" />
-	<plugin name="phonegap-admob" spec="4.1.15" />   
+    
+	<plugin name="phonegap-admob" spec="4.1.15" />
 	<!-- <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1"/> -->
 	<!-- <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1"/> -->
 	<!-- <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0"/> -->
@@ -42,6 +33,8 @@
 	<!-- <plugin name="cordova-plugin-globalization" source="npm" spec="~1.0.3"/> -->
 	<!-- <plugin name="cordova-plugin-inappbrowser" source="npm" spec="~1.3.0"/> -->
 	<!-- <plugin name="cordova-plugin-media" source="npm" spec="~2.2.0"/> -->
+	<!-- <plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0"/> -->
+	<!-- <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1"/> -->
 	<!-- <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2"/> -->
 	<!-- <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0"/> -->
 	<!-- <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1"/> -->
@@ -59,5 +52,12 @@
 		<gap:splash src="img/screen/android/screen-hdpi-portrait.png"  gap:platform="android" gap:density="hdpi" />
 		<gap:splash src="img/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:density="xhdpi" />
 	</platform>
+	
+	<allow-intent href="http://*/*"/>
+	<allow-intent href="https://*/*"/>
+	<allow-intent href="tel:*"/>
+	<allow-intent href="sms:*"/>
+	<allow-intent href="mailto:*"/>
+	<allow-intent href="geo:*"/>
 	
 </widget>
