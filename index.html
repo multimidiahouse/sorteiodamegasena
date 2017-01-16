@@ -24,10 +24,10 @@
 	<div style="text-align:center;">
 	<p>Seus números da sorte são:</p>
 	<script>
+		var numeros = index.sorteio('megasena');
+		for(i=0;i<numeros.length;i++)
+			document.write('<div class="numerosdasorte">'+numeros[i]+'</div>');
 		index.initialize();
-		//var numeros = index.sorteio('megasena');
-		//for(i=0;i<numeros.length;i++)
-		//	document.write('<div class="numerosdasorte">'+numeros[i]+'</div>');
 	</script>
 	</div>
 	<form>

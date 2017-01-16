@@ -98,10 +98,6 @@ var index = {
 		} else {
 			alert('cordova-admob plugin not ready.\nAre you in a desktop browser? It won\'t work...');
 		}
-		
-		var numeros = index.sorteio('megasena');
-		for(i=0;i<numeros.length;i++)
-			document.write('<div class="numerosdasorte">'+numeros[i]+'</div>');
 	},
     onAdLoaded: function (e) {
         index.showProgress(false);
