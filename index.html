@@ -17,25 +17,6 @@
 </head>
 <body>
 <div data-role="page" id="homepage" data-theme="a">
-	<div id="progressDialog" class="progressDialog hidden">
-		<div id="spinner"></div>
-		<span id="message">Loading ads...</span>
-	</div>
-    <p>
-      <a class="button" onclick="index.startBannerAds()">Start Banner Ads</a>
-      <a class="button" onclick="index.removeBannerAds()">Remove Banner Ads</a>
-    </p>
-    <p>
-      <a class="button" onclick="index.showBannerAds()">Show Banner Ads</a>
-      <a class="button" onclick="index.hideBannerAds()">Hide Banner Ads</a>
-    </p>
-    <p>
-      <a class="button" onclick="index.requestInterstitial(true)">Request and show Interstitial</a>
-    </p>
-    <p>
-      <a class="button" onclick="index.requestInterstitial(false)">Request Interstitial</a>
-      <a class="button" onclick="index.showInterstitial()">Show Interstitial</a>
-    </p>
 	<div style="text-align:center;">
 	<p>Seus números da sorte são:</p>
 	<script>
@@ -46,6 +27,25 @@
 	</script>
 	</div>
 	<form>
+		<div id="progressDialog" class="progressDialog hidden">
+			<div id="spinner"></div>
+			<span id="message">Loading ads...</span>
+		</div>
+		<p>
+		  <a class="button" onclick="index.startBannerAds()">Start Banner Ads</a>
+		  <a class="button" onclick="index.removeBannerAds()">Remove Banner Ads</a>
+		</p>
+		<p>
+		  <a class="button" onclick="index.showBannerAds()">Show Banner Ads</a>
+		  <a class="button" onclick="index.hideBannerAds()">Hide Banner Ads</a>
+		</p>
+		<p>
+		  <a class="button" onclick="index.requestInterstitial(true)">Request and show Interstitial</a>
+		</p>
+		<p>
+		  <a class="button" onclick="index.requestInterstitial(false)">Request Interstitial</a>
+		  <a class="button" onclick="index.showInterstitial()">Show Interstitial</a>
+		</p>
 		<select name="jogo" id="jogo">
 			<option value="megasena">MEGASENA</option>
 			<option value="quina">QUINA</option>
