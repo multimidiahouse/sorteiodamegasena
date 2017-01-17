@@ -243,6 +243,8 @@ var app = {
 		html = '';
 		jogo = document.getElementById("jogo").value;
 		quantidade = document.getElementById("quantidade").value;
+		alert(jogo);
+		alert(quantidade);
 		linhas = 0;
 		colunas = 0;
 		switch(jogo)
