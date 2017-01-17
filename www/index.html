@@ -36,13 +36,17 @@
 		<p>Seus números da sorte são:</p>
 		</div>
 		<form>
+			<div>
 			<select name="jogo" id="jogo">
 				<option value="megasena">MEGASENA</option>
 				<option value="quina">QUINA</option>
 			</select>
-			<label for="QUANTIDADE">Quantidade de Jogos</label>
-			<input type="number" name="quantidade" id="quantidade" value="1" />
-			<a data-role="button" id="jogar" href="#cartelas" onclick="app.cartelas();">Jogar</a>
+			</div>
+			<div>
+				<label for="QUANTIDADE">Quantidade de Jogos</label>
+				<input type="number" name="quantidade" id="quantidade" value="1" />
+			</div>
+			<a id="jogar" onclick="app.cartelas();">Jogar</a>
 		</form>
 	</div>
 	<script type="text/javascript" src="cordova.js"></script>

@@ -148,9 +148,17 @@ var app = {
     showBannerAds: function () {
         if (window.admob) {
             app.showProgress(false);
-            window.admob.showBannerAd(true, function () { }, function (e) {
-                alert(JSON.stringify(e));
-            });
+            window.admob.showBannerAd(true,
+				function ()
+				{
+					var numeros = app.sorteio('megasena');
+					alert(numeros.toString());
+				},
+				function (e) 
+				{
+					alert(JSON.stringify(e));
+				}
+			);
         } else {
             alert('cordova-admob plugin not ready.\nAre you in a desktop browser? It won\'t work...');
         }
