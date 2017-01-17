@@ -154,8 +154,9 @@ var app = {
 					var numeros = app.sorteio('megasena');
 					for(i=0;i<numeros.length;i++)
 					{
+						alert(numeros[i]);
 						//document.getElementById("cartelas").remove();
-						document.getElementById("cartelas").appendChild('<div class="numerosdasorte">'+numeros[i]+'</div>');
+						//document.getElementById("cartelas").appendChild('<div class="numerosdasorte">'+numeros[i]+'</div>');
 					}
 				},
 				function (e) 
@@ -233,7 +234,7 @@ var app = {
 		return vector;
 
 	},
-	cartelas: function(jogo, quantidade) {
+	cartelas: function() {
 		html = '';
 		jogo = document.getElementById("jogo").value;
 		quantidade = document.getElementById("quantidade").value;
