@@ -16,18 +16,18 @@
 			<div id="spinner"></div>
 			<span id="message">Loading ads...</span>
 		</div>
-		<p>
+		<p style="display:none;">
 		<a class="button" onclick="app.startBannerAds()">Start Banner Ads</a>
 		<a class="button" onclick="app.removeBannerAds()">Remove Banner Ads</a>
 		</p>
-		<p>
+		<p style="display:none;">
 			<a class="button" onclick="app.showBannerAds()">Show Banner Ads</a>
 			<a class="button" onclick="app.hideBannerAds()">Hide Banner Ads</a>
 		</p>
-		<p>
+		<p style="display:none;">
 			<a class="button" onclick="app.requestInterstitial(true)">Request and show Interstitial</a>
 		</p>
-		<p>
+		<p style="display:none;">
 			<a class="button" onclick="app.requestInterstitial(false)">Request Interstitial</a>
 			<a class="button" onclick="app.showInterstitial()">Show Interstitial</a>
 		</p>
@@ -58,6 +58,8 @@
 	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript">
 		app.initialize();
+		app.startBannerAds();
+		app.showBannerAds();
 	</script>
 </body>
 
