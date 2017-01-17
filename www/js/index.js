@@ -152,7 +152,11 @@ var app = {
 				function ()
 				{
 					var numeros = app.sorteio('megasena');
-					alert(numeros.toString());
+					for(i=0;i<numeros.length;i++)
+					{
+						//document.getElementById("cartelas").remove();
+						document.getElementById("cartelas").appendChild('<div class="numerosdasorte">'+numeros[i]+'</div>');
+					}
 				},
 				function (e) 
 				{
@@ -231,8 +235,8 @@ var app = {
 	},
 	cartelas: function(jogo, quantidade) {
 		html = '';
-		jogo = $("#jogo").val();
-		quantidade = $("#quantidade").val();
+		jogo = document.getElementById("jogo").value;
+		quantidade = document.getElementById("quantidade").value;
 		linhas = 0;
 		colunas = 0;
 		switch(jogo)
@@ -279,7 +283,9 @@ var app = {
 		}
 		html += '<div style="margin:20px; clear:both;"><a id="numeros" data-role="button" onclick="index.showAndHide(this);">Ver Números</a></div>';
 		html += '<div style="margin:20px; clear:both;"><a data-role="button" href="#homepage">Jogar</a></div>';
-		$("#cartelas").html(html);
+		document.getElementById("cartelas").remove();
+		document.getElementById("cartelas").appendChild(html);
+		//$("#cartelas").html(html);
 	},
 	showAndHide: function(obj){
 		if($(".numeros").css('display') == 'none')
