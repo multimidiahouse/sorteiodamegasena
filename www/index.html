@@ -8,11 +8,6 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<meta name="msapplication-tap-highlight" content="no" />
 	<title>Sorteio da Megasena</title>
-	<script type="text/javascript" src="cordova.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript">
-		app.initialize();
-	</script>
 </head>
 <body onresize="app.onResize()">
 	<div id="fullpage" class="app">
@@ -37,14 +32,8 @@
 		</p>
 		<div style="display:none;" id="sizeinfo">width * height</div>
 		<div style="display:none;">Try to rotate screen to test orientation change event</div>
-		<div style="text-align:center;">
+		<div id="cartelas" style="text-align:center;">
 		<p>Seus números da sorte são:</p>
-		<script type="text/javascript">
-			var numeros = app.sorteio('megasena');
-			alert(numeros.toString());
-			for(i=0;i<numeros.length;i++)
-				document.write('<div class="numerosdasorte">'+numeros[i]+'</div>');
-		</script>
 		</div>
 		<form>
 			<select name="jogo" id="jogo">
@@ -56,6 +45,17 @@
 			<a data-role="button" id="jogar" href="#cartelas" onclick="app.cartelas();">Jogar</a>
 		</form>
 	</div>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript">
+		app.initialize();
+		//var numeros = app.sorteio('megasena');
+		//alert(numeros.toString());
+		//for(i=0;i<numeros.length;i++)
+		//{
+		//	document.getElementById("cartelas").
+		//}
+	</script>
 </body>
 
 </html>
