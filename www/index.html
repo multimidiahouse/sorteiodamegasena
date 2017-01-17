@@ -34,6 +34,13 @@
 		<div style="display:none;" id="sizeinfo">width * height</div>
 		<div style="display:none;">Try to rotate screen to test orientation change event</div>
 		
+	</div>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript">
+		app.initialize();
+	</script>
+	<div>
 		<div style="text-align:center;">
 		<p>Seus números da sorte são:</p>
 		<script type="text/javascript">
@@ -53,14 +60,6 @@
 			<a data-role="button" id="jogar" href="#cartelas" onclick="app.cartelas();">Jogar</a>
 		</form>
 	</div>
-
-	<script type="text/javascript" src="cordova.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript">
-		app.initialize();
-		//app.startBannerAds();
-		//app.showBannerAds();
-	</script>
 </body>
 
 </html>

@@ -47,7 +47,7 @@ var app = {
                 bannerAtTop: false, // set to true, to put banner at top
                 overlap: false, // set to true, to allow banner overlap webview
                 offsetStatusBar: true, // set to true to avoid ios7 status bar overlap
-                isTesting: false, // receiving test ads (do not test with real ads as your account will be banned)
+                isTesting: true, // receiving test ads (do not test with real ads as your account will be banned)
                 autoShowBanner: true, // auto show banners ad when loaded
                 autoShowInterstitial: false // auto show interstitials ad when loaded
             });
