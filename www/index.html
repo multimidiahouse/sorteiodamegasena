@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="format-detection" content="telephone=no" />
   <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-  <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /-->
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
   <link rel="stylesheet" type="text/css" href="css/index.css" />
   <meta name="msapplication-tap-highlight" content="no" />
   <title>Sorteio da Megasena</title>
@@ -31,28 +31,27 @@
 			<a class="button" onclick="app.requestInterstitial(false)">Request Interstitial</a>
 			<a class="button" onclick="app.showInterstitial()">Show Interstitial</a>
 		</p>
-
-		<div id="sizeinfo">width * height</div>
-		<div>Try to rotate screen to test orientation change event</div>
+		<div style="display:none;" id="sizeinfo">width * height</div>
+		<div style="display:none;">Try to rotate screen to test orientation change event</div>
+		
+		<div style="text-align:center;">
+		<p>Seus números da sorte são:</p>
+		<script>
+			var numeros = app.sorteio('megasena');
+			for(i=0;i<numeros.length;i++)
+				document.write('<div class="numerosdasorte">'+numeros[i]+'</div>');
+		</script>
+		</div>
+		<form>
+			<select name="jogo" id="jogo">
+				<option value="megasena">MEGASENA</option>
+				<option value="quina">QUINA</option>
+			</select>
+			<label for="QUANTIDADE">Quantidade de Jogos</label>
+			<input type="number" name="quantidade" id="quantidade" value="1" />
+			<a data-role="button" id="jogar" href="#cartelas" onclick="app.cartelas();">Jogar</a>
+		</form>
 	</div>
-	
-	<div style="text-align:center;">
-	<p>Seus números da sorte são:</p>
-	<script>
-		var numeros = app.sorteio('megasena');
-		for(i=0;i<numeros.length;i++)
-			document.write('<div class="numerosdasorte">'+numeros[i]+'</div>');
-	</script>
-	</div>
-	<form>
-		<select name="jogo" id="jogo">
-			<option value="megasena">MEGASENA</option>
-			<option value="quina">QUINA</option>
-		</select>
-		<label for="QUANTIDADE">Quantidade de Jogos</label>
-		<input type="number" name="quantidade" id="quantidade" value="1" />
-		<a data-role="button" id="jogar" href="#cartelas" onclick="app.cartelas();">Jogar</a>
-	</form>
 
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
