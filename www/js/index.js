@@ -104,6 +104,7 @@ var app = {
         } else {
             alert('cordova-admob plugin not ready.\nAre you in a desktop browser? It won\'t work...');
         }
+		
     },
     onAdLoaded: function (e) {
         app.showProgress(false);
@@ -152,11 +153,15 @@ var app = {
 				function ()
 				{
 					var numeros = app.sorteio('megasena');
+					console.log(numeros.length);
 					for(i=0;i<numeros.length;i++)
 					{
-						alert(numeros[i]);
+						var numerosdasorte = document.createElement('div');
+						numerosdasorte.className = "numerosdasorte";
+						var numerosorteado = document.createTextNode(numeros[i]);
+						numerosdasorte.appendChild(numerosorteado);
 						//document.getElementById("cartelas").remove();
-						//document.getElementById("cartelas").appendChild('<div class="numerosdasorte">'+numeros[i]+'</div>');
+						document.getElementById("cartelas").appendChild(numerosdasorte);
 					}
 				},
 				function (e) 
