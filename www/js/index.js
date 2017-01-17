@@ -49,6 +49,7 @@ var app = {
                 autoShowBanner: true, // auto show banners ad when loaded
                 autoShowInterstitial: false // auto show interstitials ad when loaded
             });
+			app.startBannerAds();
         } else {
             alert('cordova-admob plugin not ready.\nAre you in a desktop browser? It won\'t work...');
         }
@@ -92,9 +93,11 @@ var app = {
         }
 
         if (window.admob) {
-            console.log('Binding ad events...');
+            //console.log('Binding ad events...');
+			alert('Binding ad events...');
             app.bindAdEvents();
-            console.log('Initializing ads...');
+            //console.log('Initializing ads...');
+			alert('Initializing ads...');
             app.initAds();
         } else {
             alert('cordova-admob plugin not ready.\nAre you in a desktop browser? It won\'t work...');
@@ -125,7 +128,7 @@ var app = {
     startBannerAds: function () {
         if (window.admob) {
             app.showProgress(true);
-            window.admob.createBannerView(function () { }, function (e) {
+            window.admob.createBannerView(function () { app.showBannerAds(); }, function (e) {
                 alert(JSON.stringify(e));
             });
         } else {
