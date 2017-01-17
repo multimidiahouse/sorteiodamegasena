@@ -1,5 +1,7 @@
 var app = {
     // global vars
+	jogo: new String(),
+	quantidade: new Number(),
     autoShowInterstitial: false,
     progressDialog: document.getElementById("progressDialog"),
     spinner: document.getElementById("spinner"),
@@ -21,14 +23,14 @@ var app = {
     // Must be called when deviceready is fired so AdMobAds plugin will be ready
     initAds: function () {
         var isAndroid = (/(android)/i.test(navigator.userAgent));
-        var adPublisherIds = {
-            ios: {
-                banner: 'ca-app-pub-9863325511078756/5232547029',
-                interstitial: 'ca-app-pub-9863325511078756/6709280228'
-            },
+		var adPublisherIds = {
+			//ios: {
+			//	banner: 'ca-app-pub-9863325511078756/5232547029',
+			//	interstitial: 'ca-app-pub-9863325511078756/6709280228'
+			//},
             android: {
-                banner: 'ca-app-pub-9863325511078756/9802347428',
-                interstitial: 'ca-app-pub-9863325511078756/2279080628'
+                banner: 'ca-app-pub-5075057333402288/2294971952',
+                interstitial: 'ca-app-pub-5075057333402288/7922703150'
             }
         };
         var admobid;
@@ -94,10 +96,10 @@ var app = {
 
         if (window.admob) {
             //console.log('Binding ad events...');
-			alert('Binding ad events...');
+			//alert('Binding ad events...');
             app.bindAdEvents();
             //console.log('Initializing ads...');
-			alert('Initializing ads...');
+			//alert('Initializing ads...');
             app.initAds();
         } else {
             alert('cordova-admob plugin not ready.\nAre you in a desktop browser? It won\'t work...');
@@ -191,7 +193,7 @@ var app = {
             removeClass(app.spinner, "animated");
         }
     },
-	sorteio: function(jogo){
+	sorteio: function(jogo) {
 		marcacao = 0;
 		numeros = 0;
 		
