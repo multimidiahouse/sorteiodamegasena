@@ -160,6 +160,14 @@ a.button {
 
 .jogo {
 	float:left;
-	margin:5px;
+	width:90%;
+	margin:5%;
 	border:1px solid #fc9103;
+}
+.jogo table {
+	width:100%;
+}
+.jogo table td {
+	padding:2%;
+	font-size: 1em;
 }

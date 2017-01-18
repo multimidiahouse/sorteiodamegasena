@@ -2,6 +2,7 @@ var app = {
     // global vars
 	jogo: new String(),
 	quantidade: new Number(),
+	valorTotalDaAposta: new Number(),
     autoShowInterstitial: false,
     progressDialog: document.getElementById("progressDialog"),
     spinner: document.getElementById("spinner"),
@@ -230,6 +231,7 @@ var app = {
 
 	},
 	cartelas: function() {
+		app.valorTotalDaAposta = 0;
 		var jogo = document.getElementById("jogo").value;
 		var quantidade = document.getElementById("quantidade").value;
 		var linhas = 0;
@@ -247,7 +249,6 @@ var app = {
 		}
 		var numerosdasorte = document.getElementById("cartelas");
 		numerosdasorte.innerHTML = '';
-		numerosdasorte.style.textAlign = 'center';
 		for(cartela=0;cartela<quantidade;cartela++)
 		{
 			var divCartela = document.createElement('div');
@@ -266,6 +267,9 @@ var app = {
 						var text = document.createTextNode(acerto);
 						if(numeros.indexOf(acerto) >= 0)
 							td.style.background = '#fc9103';
+						var att = document.createAttribute("onclick");
+						att.value = "app.mudaAposta(this);";
+						td.setAttributeNode(att);
 						td.appendChild(text);
 						tr.appendChild(td);
 						acerto++;
@@ -275,9 +279,21 @@ var app = {
 					acerto++;
 				}
 				divCartela.appendChild(table);
+				var valor = document.createElement('div');
+				valor.setAttribute('id','cartela'+cartela);
+				valor.style.background = '#fc9103';
+				valor.style.fontSize = '2em';
+				valor.innerHTML = 'R$ 3,50';
+				divCartela.appendChild(valor);
 			}
 			numerosdasorte.appendChild(divCartela);
+			app.valorTotalDaAposta = app.valorTotalDaAposta + 3.50;
 		}
+		var valor = document.createElement('div');
+		valor.setAttribute('id','valorTotalDaAposta');
+		valor.style.fontSize = '2em';
+		valor.innerHTML = 'R$ '+app.valorTotalDaAposta.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+		numerosdasorte.appendChild(valor);
 	},
 	numerosdasorte: function() {
 		document.getElementById("cartelas").innerHTML = '<p>Seus números da sorte são:</p>';
@@ -304,6 +320,93 @@ var app = {
 			$(".cartela").css('display','block');
 			$(obj).html('Ver Números');
 		}
+	},
+	mudaAposta: function(obj) {
+		
+		if(obj.style.background == 'rgb(252, 145, 3)')
+			obj.style.background = '';
+		else
+			obj.style.background = 'rgb(252, 145, 3)';
+		
+		var contN = new Number();
+		tr = obj.parentElement;
+		table = tr.parentElement;
+		div = table.parentElement;
+		a = table.childNodes;
+		for(i=0;i<a.length;i++)
+		{
+			b = a[i].childNodes;
+			for(j=0;j<b.length;j++)
+				if(b[j].style.background == 'rgb(252, 145, 3)')
+					contN++;
+		}
+		
+		valorDoJogo = div.getElementsByTagName('div');
+		valorDoJogo = valorDoJogo[0];
+		
+		valorTotal = new String();
+		valorTotal = valorDoJogo.innerHTML;
+		if(valorTotal == 'Não é possível realizar esse jogo')
+		{
+			valorTotal = new Number(0);
+		}
+		else
+		{
+			valorTotal = valorTotal.split(' ');
+			valorTotal = valorTotal[1].replace('.','');
+			valorTotal = new Number(parseFloat(valorTotal.replace(',','.')));
+		}
+		
+		app.valorTotalDaAposta = app.valorTotalDaAposta - valorTotal;
+
+		switch(contN)
+		{
+			case 6:
+				valorTotal = 3.50;
+				break;
+			case 7:
+				valorTotal = 24.50;
+				break;
+			case 8:
+				valorTotal = 98.00;
+				break;
+			case 9:
+				valorTotal = 294.00;
+				break;
+			case 10:
+				valorTotal = 735.00;
+				break;
+			case 11:
+				valorTotal = 1617.00;
+				break;
+			case 12:
+				valorTotal = 3234.00;
+				break;
+			case 13:
+				valorTotal = 6006.00;
+				break;
+			case 14:
+				valorTotal = 10510.50;
+				break;
+			case 15:
+				valorTotal = 17517.50;
+				break;
+			default:
+				valorTotal = new String('Não é possível realizar esse jogo');
+				break;
+		}
+		if(valorTotal != 'Não é possível realizar esse jogo')
+		{
+			valorDoJogo.innerHTML = 'R$ '+valorTotal.toLocaleString('pt-BR', { minimumFractionDigits:2 });
+			app.valorTotalDaAposta = app.valorTotalDaAposta + valorTotal;
+		}
+		else
+		{
+			valorDoJogo.innerHTML = 'Não é possível realizar esse jogo';
+		}
+		
+		totalDaAposta = document.getElementById('valorTotalDaAposta');
+		totalDaAposta.innerHTML = 'R$ '+app.valorTotalDaAposta.toLocaleString('pt-BR', { minimumFractionDigits:2 });
 	}
 };
 
