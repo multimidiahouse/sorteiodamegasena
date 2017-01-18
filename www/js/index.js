@@ -283,11 +283,17 @@ var app = {
 				valor.setAttribute('id','cartela'+cartela);
 				valor.style.background = '#fc9103';
 				valor.style.fontSize = '2em';
-				valor.innerHTML = 'R$ 3,50';
+				if(jogo == 'megasena')
+					valor.innerHTML = 'R$ 3,50';
+				else
+					valor.innerHTML = 'R$ 1,00';
 				divCartela.appendChild(valor);
 			}
 			numerosdasorte.appendChild(divCartela);
-			app.valorTotalDaAposta = app.valorTotalDaAposta + 3.50;
+			if(jogo == 'megasena')
+				app.valorTotalDaAposta = app.valorTotalDaAposta + 3.50;
+			else
+				app.valorTotalDaAposta = app.valorTotalDaAposta + 1;
 		}
 		var valor = document.createElement('div');
 		valor.setAttribute('id','valorTotalDaAposta');
@@ -322,6 +328,8 @@ var app = {
 		}
 	},
 	mudaAposta: function(obj) {
+		
+		var jogo = document.getElementById("jogo").value;
 		
 		if(obj.style.background == 'rgb(252, 145, 3)')
 			obj.style.background = '';
@@ -359,42 +367,64 @@ var app = {
 		
 		app.valorTotalDaAposta = app.valorTotalDaAposta - valorTotal;
 
-		switch(contN)
+		if(jogo == 'megasena')
 		{
-			case 6:
-				valorTotal = 3.50;
-				break;
-			case 7:
-				valorTotal = 24.50;
-				break;
-			case 8:
-				valorTotal = 98.00;
-				break;
-			case 9:
-				valorTotal = 294.00;
-				break;
-			case 10:
-				valorTotal = 735.00;
-				break;
-			case 11:
-				valorTotal = 1617.00;
-				break;
-			case 12:
-				valorTotal = 3234.00;
-				break;
-			case 13:
-				valorTotal = 6006.00;
-				break;
-			case 14:
-				valorTotal = 10510.50;
-				break;
-			case 15:
-				valorTotal = 17517.50;
-				break;
-			default:
-				valorTotal = new String('Não é possível realizar esse jogo');
-				break;
+			switch(contN)
+			{
+				case 6:
+					valorTotal = 3.50;
+					break;
+				case 7:
+					valorTotal = 24.50;
+					break;
+				case 8:
+					valorTotal = 98.00;
+					break;
+				case 9:
+					valorTotal = 294.00;
+					break;
+				case 10:
+					valorTotal = 735.00;
+					break;
+				case 11:
+					valorTotal = 1617.00;
+					break;
+				case 12:
+					valorTotal = 3234.00;
+					break;
+				case 13:
+					valorTotal = 6006.00;
+					break;
+				case 14:
+					valorTotal = 10510.50;
+					break;
+				case 15:
+					valorTotal = 17517.50;
+					break;
+				default:
+					valorTotal = new String('Não é possível realizar esse jogo');
+					break;
+			}
 		}
+		else
+		{
+			switch(contN)
+			{
+				case 5:
+					valorTotal = 1;
+					break;
+				case 6:
+					valorTotal = 4;
+					break;
+				case 7:
+					valorTotal = 10;
+					break;
+				default:
+					valorTotal = new String('Não é possível realizar esse jogo');
+					break;
+			}
+		}
+		
 		if(valorTotal != 'Não é possível realizar esse jogo')
 		{
 			valorDoJogo.innerHTML = 'R$ '+valorTotal.toLocaleString('pt-BR', { minimumFractionDigits:2 });
