@@ -105,6 +105,7 @@ var app = {
             alert('cordova-admob plugin not ready.\nAre you in a desktop browser? It won\'t work...');
         }
 		
+		app.numerosdasorte();
     },
     onAdLoaded: function (e) {
         app.showProgress(false);
@@ -152,17 +153,6 @@ var app = {
             window.admob.showBannerAd(true,
 				function ()
 				{
-					var numeros = app.sorteio('megasena');
-					console.log(numeros.length);
-					for(i=0;i<numeros.length;i++)
-					{
-						var numerosdasorte = document.createElement('div');
-						numerosdasorte.className = "numerosdasorte";
-						var numerosorteado = document.createTextNode(numeros[i]);
-						numerosdasorte.appendChild(numerosorteado);
-						//document.getElementById("cartelas").remove();
-						document.getElementById("cartelas").appendChild(numerosdasorte);
-					}
 				},
 				function (e) 
 				{
@@ -240,13 +230,10 @@ var app = {
 
 	},
 	cartelas: function() {
-		html = '';
-		jogo = document.getElementById("jogo").value;
-		quantidade = document.getElementById("quantidade").value;
-		alert(jogo);
-		alert(quantidade);
-		linhas = 0;
-		colunas = 0;
+		var jogo = document.getElementById("jogo").value;
+		var quantidade = document.getElementById("quantidade").value;
+		var linhas = 0;
+		var colunas = 0;
 		switch(jogo)
 		{
 		   case 'megasena':
@@ -258,42 +245,51 @@ var app = {
 			  colunas = 10;
 			  break;
 		}
-		
+		var numerosdasorte = document.getElementById("cartelas");
+		numerosdasorte.innerHTML = '';
+		numerosdasorte.style.textAlign = 'center';
 		for(cartela=0;cartela<quantidade;cartela++)
 		{
-			html += '<div style="float:left; margin-left:5px; margin-right:5px; margin-top:10px; margin-bottom:20px; border:1px solid gray;">';
+			var divCartela = document.createElement('div');
+			divCartela.className = 'jogo';
 			for(table=0;table<2;table++)
 			{
-				numeros = index.sorteio(jogo);
-				html += '<div class="numeros" style="display:none;">'+numeros.toString()+'</div>';
+				numeros = this.sorteio(jogo);
 				acerto = new Number(1);
-				html += '<div class="cartela"><table>';
+				var table = document.createElement('table');
 				for(i=0;i<linhas;i++)
 				{
-					html += '<tr>';
+					var tr = document.createElement('tr');
 					for(y=0;y<colunas;y++)
 					{
+						var td = document.createElement('td');
+						var text = document.createTextNode(acerto);
 						if(numeros.indexOf(acerto) >= 0)
-							html += '<td bgcolor="#fc9103">'+acerto+'</td>';
-						else
-							html += '<td>'+acerto+'</td>';
+							td.style.background = '#fc9103';
+						td.appendChild(text);
+						tr.appendChild(td);
 						acerto++;
 					}
 					acerto--;
-					html += '</tr>';
+					table.appendChild(tr);
 					acerto++;
 				}
-				if(table == 0)
-					html += '<tr><td colspan="10">Aposte que vai da certo</td></tr>';
-				html += '</table></div>';
+				divCartela.appendChild(table);
 			}
-			html += '</div>';
+			numerosdasorte.appendChild(divCartela);
 		}
-		html += '<div style="margin:20px; clear:both;"><a id="numeros" data-role="button" onclick="index.showAndHide(this);">Ver Números</a></div>';
-		html += '<div style="margin:20px; clear:both;"><a data-role="button" href="#homepage">Jogar</a></div>';
-		document.getElementById("cartelas").remove();
-		document.getElementById("cartelas").appendChild(html);
-		//$("#cartelas").html(html);
+	},
+	numerosdasorte: function() {
+		document.getElementById("cartelas").innerHTML = '<p>Seus números da sorte são:</p>';
+		var numeros = app.sorteio('megasena');
+		for(i=0;i<numeros.length;i++)
+		{
+			var numerosdasorte = document.createElement('div');
+			numerosdasorte.className = "numerosdasorte";
+			var numerosorteado = document.createTextNode(numeros[i]);
+			numerosdasorte.appendChild(numerosorteado);
+			document.getElementById("cartelas").appendChild(numerosdasorte);
+		}
 	},
 	showAndHide: function(obj){
 		if($(".numeros").css('display') == 'none')

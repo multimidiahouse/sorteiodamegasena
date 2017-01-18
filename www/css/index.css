@@ -8,7 +8,9 @@ html, body {
   margin:0;
   padding:0;
   overflow:hidden;
-  background-color:white;
+  background-color:#3572b0;
+  color:white;
+  font-family: Arial;
 }
 
 #fullpage {
@@ -104,7 +106,60 @@ a.button {
 	padding-top:30px;
 	height:70px;
 	width:100px;
-	border:1px solid ##064424;
+	border:0px;
 	background-color:#0b8043;
+	color:white;
 	font-size:30px;
+}
+
+#jogo {
+	border-radius:10px;
+	width:90%;
+	height:50px;
+	background-color:#fc9103;
+	color:white;
+	font-size:20px;
+	text-align:center;
+	margin:10px;
+}
+
+#quantidade {
+	border-radius:10px;
+	width:90%;
+	height:50px;
+	background-color:transparent;
+	border:1px solid #fc9103;
+	color:white;
+	font-size:20px;
+	text-align:center;
+	margin:10px;
+}
+
+#jogar {
+	border-radius:10px;
+	width:90%;
+	height:50px;
+	background-color:#fc9103;
+	color:white;
+	font-size:20px;
+	text-align:center;
+	margin:10px;
+}
+
+#numerosdasorte {
+	border-radius:10px;
+	width:90%;
+	height:50px;
+	background-color:#0b8043;
+	border:1px solid #0b8043;
+	color:white;
+	font-size:20px;
+	text-align:center;
+	margin:10px;
+}
+
+.jogo {
+	float:left;
+	margin:5px;
+	border:1px solid #fc9103;
 }
