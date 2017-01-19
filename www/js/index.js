@@ -3,6 +3,8 @@ var app = {
 	jogo: new String(),
 	quantidade: new Number(),
 	valorTotalDaAposta: new Number(),
+	valorMegasena: new Number(3.5),
+	valorQuina: new Number(1),
     autoShowInterstitial: false,
     progressDialog: document.getElementById("progressDialog"),
     spinner: document.getElementById("spinner"),
@@ -284,16 +286,16 @@ var app = {
 				valor.style.background = '#fc9103';
 				valor.style.fontSize = '2em';
 				if(jogo == 'megasena')
-					valor.innerHTML = 'R$ 3,50';
+					valor.innerHTML = 'R$ '+app.valorMegasena.toLocaleString('pt-BR', { minimumFractionDigits:2 });
 				else
-					valor.innerHTML = 'R$ 1,00';
+					valor.innerHTML = 'R$ '+app.valorQuina.toLocaleString('pt-BR', { minimumFractionDigits:2 });;
 				divCartela.appendChild(valor);
 			}
 			numerosdasorte.appendChild(divCartela);
 			if(jogo == 'megasena')
-				app.valorTotalDaAposta = app.valorTotalDaAposta + 3.50;
+				app.valorTotalDaAposta = app.valorTotalDaAposta + app.valorMegasena;
 			else
-				app.valorTotalDaAposta = app.valorTotalDaAposta + 1;
+				app.valorTotalDaAposta = app.valorTotalDaAposta + app.valorQuina;
 		}
 		var valor = document.createElement('div');
 		valor.setAttribute('id','valorTotalDaAposta');
@@ -362,7 +364,7 @@ var app = {
 		{
 			valorTotal = valorTotal.split(' ');
 			valorTotal = valorTotal[1].replace('.','');
-			valorTotal = new Number(parseFloat(valorTotal.replace(',','.')));
+			valorTotal = parseFloat(valorTotal.replace(',','.'));
 		}
 		
 		app.valorTotalDaAposta = app.valorTotalDaAposta - valorTotal;
