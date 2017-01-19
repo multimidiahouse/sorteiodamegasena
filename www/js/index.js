@@ -286,9 +286,9 @@ var app = {
 				valor.style.background = '#fc9103';
 				valor.style.fontSize = '2em';
 				if(jogo == 'megasena')
-					valor.innerHTML = 'R$ '+app.valorMegasena.toLocaleString('pt-BR', { minimumFractionDigits:2 });
+					valor.innerHTML = 'R$ '+app.valorMegasena.toLocaleString('en-IN', { minimumFractionDigits:2 });
 				else
-					valor.innerHTML = 'R$ '+app.valorQuina.toLocaleString('pt-BR', { minimumFractionDigits:2 });;
+					valor.innerHTML = 'R$ '+app.valorQuina.toLocaleString('en-IN', { minimumFractionDigits:2 });;
 				divCartela.appendChild(valor);
 			}
 			numerosdasorte.appendChild(divCartela);
@@ -300,7 +300,7 @@ var app = {
 		var valor = document.createElement('div');
 		valor.setAttribute('id','valorTotalDaAposta');
 		valor.style.fontSize = '2em';
-		valor.innerHTML = 'R$ '+app.valorTotalDaAposta.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+		valor.innerHTML = 'R$ '+app.valorTotalDaAposta.toLocaleString('en-IN', { minimumFractionDigits: 2 });
 		numerosdasorte.appendChild(valor);
 	},
 	numerosdasorte: function() {
@@ -362,11 +362,14 @@ var app = {
 		}
 		else
 		{
-			valorTotal = valorTotal.split(' ');
-			valorTotal = valorTotal[1].replace('.','');
-			valorTotal = parseFloat(valorTotal.replace(',','.'));
+			//valorTotal = valorTotal.split(' ');
+			valorTotal = valorTotal.replace('R$','');
+			valorTotal = valorTotal.replace(',','');
+			//valorTotal = valorTotal[1].replace('.','');
+			//valorTotal = parseFloat(valorTotal.replace(',','.'));
+			valorTotal = parseFloat(valorTotal);
 		}
-		
+
 		app.valorTotalDaAposta = app.valorTotalDaAposta - valorTotal;
 
 		if(jogo == 'megasena')
@@ -429,7 +432,7 @@ var app = {
 		
 		if(valorTotal != 'Não é possível realizar esse jogo')
 		{
-			valorDoJogo.innerHTML = 'R$ '+valorTotal.toLocaleString('pt-BR', { minimumFractionDigits:2 });
+			valorDoJogo.innerHTML = 'R$ '+valorTotal.toLocaleString('en-IN', { minimumFractionDigits:2 });
 			app.valorTotalDaAposta = app.valorTotalDaAposta + valorTotal;
 		}
 		else
@@ -438,7 +441,7 @@ var app = {
 		}
 		
 		totalDaAposta = document.getElementById('valorTotalDaAposta');
-		totalDaAposta.innerHTML = 'R$ '+app.valorTotalDaAposta.toLocaleString('pt-BR', { minimumFractionDigits:2 });
+		totalDaAposta.innerHTML = 'R$ '+app.valorTotalDaAposta.toLocaleString('en-IN', { minimumFractionDigits:2 });
 	}
 };
 
