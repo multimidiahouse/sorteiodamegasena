@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<meta name="msapplication-tap-highlight" content="no" />
 	<title>Sorteio da Megasena</title>
+	<script src="js/jquery-2.1.4.min.js"></script>
 </head>
 <body onresize="app.onResize()">
 	<div id="fullpage" class="app">
@@ -33,7 +34,7 @@
 		<div style="display:none;" id="sizeinfo">width * height</div>
 		<div style="display:none;">Try to rotate screen to test orientation change event</div>
 		<div id="cartelas" style="text-align:center;">
-		<p>Seus números da sorte são:</p>
+		<p>Habilite a internet para conferir os números sorteados no último concurso...</p>
 		</div>
 		<div style="clear:both;"></div>
 		<form>
@@ -51,6 +52,8 @@
 			</div>
 			<input type="button" id="jogar" onclick="app.cartelas();" value="Jogar" />
 			<input type="button" id="numerosdasorte" onclick="app.numerosdasorte();" value="Estou com sorte" />
+			<input type="button" id="resultado" onclick="app.consultaSorteio();" value="Resultado Atual" />
+			<input type="button" id="anteriores" onclick="app.mostraConcurso();" value="Concursos Anteriores" />
 		</form>
 	</div>
 	<script type="text/javascript" src="cordova.js"></script>

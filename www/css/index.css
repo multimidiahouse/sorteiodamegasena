@@ -171,3 +171,35 @@ a.button {
 	padding:2%;
 	font-size: 1em;
 }
+
+#resultado {
+	border-radius:10px;
+	width:90%;
+	height:50px;
+	background-color:#064424;
+	border:1px solid #0b8043;
+	color:white;
+	font-size:20px;
+	text-align:center;
+	margin:10px;
+}
+
+#anteriores {
+	border-radius:10px;
+	width:90%;
+	height:50px;
+	background-color:#064424;
+	border:1px solid #0b8043;
+	color:white;
+	font-size:20px;
+	text-align:center;
+	margin:10px;
+}
+
+.concursos {
+	display:none;
+	padding:5px;
+	line-height:0.2em;
+	background-color:#064424;
+	color:white;
+}

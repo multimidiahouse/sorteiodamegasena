@@ -108,7 +108,8 @@ var app = {
             alert('cordova-admob plugin not ready.\nAre you in a desktop browser? It won\'t work...');
         }
 		
-		app.numerosdasorte();
+		//app.numerosdasorte();
+		app.consultaSorteio();
     },
     onAdLoaded: function (e) {
         app.showProgress(false);
@@ -442,6 +443,94 @@ var app = {
 		
 		totalDaAposta = document.getElementById('valorTotalDaAposta');
 		totalDaAposta.innerHTML = 'R$ '+app.valorTotalDaAposta.toLocaleString('en-IN', { minimumFractionDigits:2 });
+	},
+	consultaSorteio: function() {
+		$.ajax({
+			method: "POST",
+			dataType: "json",
+			crossDomain: true,
+			url: "http://www.multimidiahouse.com.br/mega/resultados/",
+			statusCode: {
+				404: function() {
+					//console.log('not found');
+				},
+				503: function(xhr) {
+					//console.log('invalid');
+				},
+				200: function() {
+					//console.log('found');
+				}
+			},
+			success: function(data){
+				//console.log(data);
+			}
+		})
+		.done(function(obj) {
+			var len = obj.length;
+			var sorteio = obj[len-1];
+			
+			document.getElementById("cartelas").innerHTML = '<p>Números sorteados no Concurso N°:'+sorteio.CONCURSO+' '+sorteio.DATADOSORTEIO+' </p>';
+			var numeros = new Array(sorteio.DEZENA1,sorteio.DEZENA2,sorteio.DEZENA3,sorteio.DEZENA4,sorteio.DEZENA5,sorteio.DEZENA6);
+			for(i=0;i<numeros.length;i++)
+			{
+				var numerosdasorte = document.createElement('div');
+				numerosdasorte.className = "numerosdasorte";
+				var numerosorteado = document.createTextNode(numeros[i]);
+				numerosdasorte.appendChild(numerosorteado);
+				document.getElementById("cartelas").appendChild(numerosdasorte);
+			}
+			if(sorteio.ACUMULOU == 'S')
+			{
+				var acumulou = document.createElement('div');
+				var acumulado = document.createTextNode('Acumulou! Estimativa de prêmio do próximo concurso: R$ ' + sorteio.VALORACUMULADO);
+				acumulou.appendChild(acumulado);
+				document.getElementById("cartelas").appendChild(acumulou);
+			}
+			
+			for(i=0;i<len;i++)
+			{
+				var concursos = document.createElement('div');
+				concursos.id = obj[i].CONCURSO;
+				concursos.className = 'concursos';
+				var att = document.createAttribute("onclick");
+				att.value = "app.hide(this);";
+				concursos.setAttributeNode(att);
+				
+				//Concurso
+				var p = document.createElement("p");
+				var txt = document.createTextNode("Concurso N°: "+obj[i].CONCURSO);
+				p.appendChild(txt);
+				concursos.appendChild(p);
+				//Data do Concurso
+				var p = document.createElement("p");
+				var txt = document.createTextNode("Data do Sorteio "+obj[i].DATADOSORTEIO);
+				p.appendChild(txt);
+				concursos.appendChild(p);
+				//Numeros
+				var p = document.createElement("p");
+				var txt = document.createTextNode(obj[i].DEZENA1 + ' - ' + obj[i].DEZENA2 + ' - ' + obj[i].DEZENA3 + ' - ' + obj[i].DEZENA4 + ' - ' + obj[i].DEZENA5 + ' - ' + obj[i].DEZENA6);
+				p.appendChild(txt);
+				concursos.appendChild(p);
+				document.getElementById("cartelas").appendChild(concursos);
+			}
+		});
+	},
+	mostraConcurso: function() {
+		var concurso = prompt("Digite o n° do concurso");
+		if (concurso != null) {
+			if(document.getElementById(concurso))
+			{
+				var div = document.getElementById(concurso);
+				div.style.display = 'block';
+			}
+			else
+			{
+				alert('Concurso não realizado');
+			}
+		}
+	},
+	hide: function(obj) {
+		obj.style.display = 'none';
 	}
 };
 
