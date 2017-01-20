@@ -11,6 +11,12 @@
 	<access origin="*" />
 	<preference name="LogLevel" value="VERBOSE"/>
 	<preference name="debuggable" value="true"/>
+	<preference name="phonegap-version" value="cli-6.3.0" />
+	<preference name="orientation"      value="portrait" />
+	<preference name="fullscreen"       value="true" />
+    <preference name="target-device"    value="universal" />
+    <preference name="webviewbounce"    value="true" />
+	<preference name="stay-in-webview" value="true" />
 
 	<gap:plugin name="phonegap-admob" source="npm" />
   
