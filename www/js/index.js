@@ -82,45 +82,6 @@ var app = {
         app.onResize();
     },
     onDeviceReady: function () {
-		//Credencial Google Cloud Message
-		//AIzaSyCYUNsx6q2vMTwDj1TLiss45YM6F1K5Lpk
-		var push = PushNotification.init({
-			android: {
-				senderID: "571570324698"
-			},
-			browser: {
-				pushServiceURL: 'http://push.api.phonegap.com/v1/push'
-			},
-			ios: {
-				//alert: "true",
-				//badge: "true",
-				//sound: "true"
-			},
-			windows: {}
-		});
-
-		push.on('registration', function(data) {
-			// data.registrationId
-			console.log('register');
-		});
-
-		push.on('notification', function(data) {
-			console.log('notification');
-			// data.message,
-			// data.title,
-			// data.count,
-			// data.sound,
-			// data.image,
-			// data.additionalData
-		});
-
-		push.on('error', function(e) {
-			console.log(e);
-			// e.message
-		});
-		
-		console.log(push);
-		
         var weinre,
             weinreUrl;
 
@@ -146,7 +107,7 @@ var app = {
         } else {
             alert('cordova-admob plugin not ready.\nAre you in a desktop browser? It won\'t work...');
         }
-		
+		setupPush();
 		//app.numerosdasorte();
 		app.consultaSorteio();
     },
@@ -584,4 +545,31 @@ function removeClass(elem, cls) {
 
 function addClass(elem, cls) {
     elem.className += (" " + cls);
+}
+
+function setupPush() {
+	//Credencial Google Cloud Message
+	//AIzaSyCYUNsx6q2vMTwDj1TLiss45YM6F1K5Lpk
+	var push = PushNotification.init({
+       "android": {
+           "senderID": "571570324698"
+       },
+       "ios": {
+       },
+       "windows": {}
+   });
+
+   push.on('registration', function(data) {
+       console.log("registration event: " + data.registrationId);
+       var oldRegId = localStorage.getItem('registrationId');
+       if (oldRegId !== data.registrationId) {
+           // Save new registration ID
+           localStorage.setItem('registrationId', data.registrationId);
+           // Post registrationId to your app server as the value has changed
+       }
+   });
+
+   push.on('error', function(e) {
+       console.log("push error = " + e.message);
+   });
 }
