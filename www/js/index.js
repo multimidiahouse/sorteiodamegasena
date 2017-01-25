@@ -82,6 +82,41 @@ var app = {
         app.onResize();
     },
     onDeviceReady: function () {
+		var push = PushNotification.init({
+			android: {
+				senderID: "12345679"
+			},
+			browser: {
+				pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+			},
+			ios: {
+				alert: "true",
+				badge: "true",
+				sound: "true"
+			},
+			windows: {}
+		});
+
+		push.on('registration', function(data) {
+			// data.registrationId
+			console.log('register');
+		});
+
+		push.on('notification', function(data) {
+			console.log('notification');
+			// data.message,
+			// data.title,
+			// data.count,
+			// data.sound,
+			// data.image,
+			// data.additionalData
+		});
+
+		push.on('error', function(e) {
+			console.log(e);
+			// e.message
+		});
+		
         var weinre,
             weinreUrl;
 
@@ -445,6 +480,7 @@ var app = {
 		totalDaAposta.innerHTML = 'R$ '+app.valorTotalDaAposta.toLocaleString('en-IN', { minimumFractionDigits:2 });
 	},
 	consultaSorteio: function() {
+		document.getElementById("cartelas").innerHTML = '<p>Carregando...</p>';
 		$.ajax({
 			method: "POST",
 			dataType: "json",
