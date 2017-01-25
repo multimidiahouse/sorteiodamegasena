@@ -9,6 +9,8 @@
 	<meta name="msapplication-tap-highlight" content="no" />
 	<title>Sorteio da Megasena</title>
 	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="phonegap.js"></script>
+	<script src="js/index.js"></script>
 </head>
 <body onresize="app.onResize()">
 	<div id="fullpage" class="app">
@@ -56,8 +58,6 @@
 			<input type="button" id="anteriores" onclick="app.mostraConcurso();" value="Concursos Anteriores" />
 		</form>
 	</div>
-	<script type="text/javascript" src="cordova.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript">
 		app.initialize();
 	</script>
