@@ -19,10 +19,8 @@
 	<preference name="stay-in-webview" value="true" />
 	<preference name="android-build-tool" value="gradle" />
 	
-	<gap:plugin name="phonegap-admob" source="npm" />
-	<plugin name="phonegap-plugin-push" source="npm">
-		<param name="SENDER_ID" value="571570324698" />
-	</plugin>
+	<plugin name="phonegap-admob" spec="4.1.15" />
+	<plugin name="phonegap-plugin-push" spec="2.0.0-rc2" />
 	
 	<icon src="res/icons/appFeel-512.png" />
 
