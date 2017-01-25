@@ -82,6 +82,8 @@ var app = {
         app.onResize();
     },
     onDeviceReady: function () {
+		//Credencial Google Cloud Message
+		//AIzaSyCYUNsx6q2vMTwDj1TLiss45YM6F1K5Lpk
 		var push = PushNotification.init({
 			android: {
 				senderID: "571570324698"
@@ -90,9 +92,9 @@ var app = {
 				pushServiceURL: 'http://push.api.phonegap.com/v1/push'
 			},
 			ios: {
-				alert: "true",
-				badge: "true",
-				sound: "true"
+				//alert: "true",
+				//badge: "true",
+				//sound: "true"
 			},
 			windows: {}
 		});
@@ -116,6 +118,8 @@ var app = {
 			console.log(e);
 			// e.message
 		});
+		
+		console.log(push);
 		
         var weinre,
             weinreUrl;
